@@ -41,7 +41,7 @@ songRouter.post('/api/band/:bandID/song', bearerAuth, upload.single('audio'), fu
     return next(createError(500, 'file not saved'));
   }
 
-  let ext = path.extname(req.file.orginalname);
+  let ext = path.extname(req.file.originalname);
 
   let params = {
     ACL: 'public-read',
@@ -53,7 +53,7 @@ songRouter.post('/api/band/:bandID/song', bearerAuth, upload.single('audio'), fu
   Band.findById(req.params.bandID)
   .then( () => s3uploadProm(params))
   .then(s3data => {
-    del[`${dataDir}/*`];
+    del([`${dataDir}/*`]);
     let songData = {
       name: req.body.name,
       year: req.body.year,

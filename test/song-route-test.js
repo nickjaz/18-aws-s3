@@ -12,7 +12,7 @@ require('../server.js');
 const url = `http://localhost:${process.env.PORT}`;
 
 const exampleUser ={
-  username: 'exampleUser',
+  username: 'exampleuser',
   password: '12345',
   email: 'example@test.com'
 };
@@ -24,8 +24,8 @@ const exampleBand = {
 };
 
 const exampleSong =  {
-  name: 'example song',
-  year: 'example year',
+  name: 'example song name',
+  year: 'example song year',
   audio: `${__dirname}/../data/test.mp3`
 };
 

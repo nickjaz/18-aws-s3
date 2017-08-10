@@ -9,7 +9,7 @@ const cors = require('cors');
 
 const authRouter = require('./route/auth-router.js');
 const bandRouter = require('./route/band-router.js');
-const picRouter = require('./route/pic-router.js');
+const songRouter = require('./route/song-router.js');
 const errors = require('./lib/error-middleware.js');
 
 dotenv.load();
@@ -23,7 +23,7 @@ app.use(morgan('dev'));
 
 app.use(authRouter);
 app.use(bandRouter);
-app.use(picRouter);
+app.use(songRouter);
 app.use(errors);
 
 app.listen(PORT, () => {
