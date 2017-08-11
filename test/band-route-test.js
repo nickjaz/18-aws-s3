@@ -6,6 +6,8 @@ const Promise = require('bluebird');
 
 const User = require('../model/user.js');
 const Band = require('../model/band.js');
+const serverToggle = require('./lib/server-toggle.js');
+const server = require('../server.js');
 
 const url = `http://localhost:${process.env.PORT}`;
 
@@ -22,6 +24,14 @@ const exampleBand = {
 };
 
 describe('Band Routes', function() {
+  before(done => {
+    serverToggle.serverOn(server, done);
+  });
+
+  after(done => {
+    serverToggle.serverOff(server, done);
+  });
+
   afterEach(done => {
     Promise.all([
       User.remove({}),

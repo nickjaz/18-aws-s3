@@ -26,6 +26,8 @@ app.use(bandRouter);
 app.use(songRouter);
 app.use(errors);
 
-app.listen(PORT, () => {
+const server = module.exports = app.listen(PORT, () => {
   debug(`listening on: ${PORT}`);
 });
+
+server.isRunning = true;

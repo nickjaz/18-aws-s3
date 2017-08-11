@@ -6,8 +6,8 @@ const request = require('superagent');
 const Song = require('../model/song.js');
 const User = require('../model/user.js');
 const Band = require('../model/band.js');
-
-require('../server.js');
+const serverToggle = require('./lib/server-toggle.js');
+const server = require('../server.js');
 
 const url = `http://localhost:${process.env.PORT}`;
 
@@ -30,6 +30,14 @@ const exampleSong =  {
 };
 
 describe('Song Routes', function() {
+  before(done => {
+    serverToggle.serverOn(server, done);
+  });
+
+  after(done => {
+    serverToggle.serverOff(server, done);
+  });
+
   afterEach(done => {
     Promise.all([
       Song.remove({}),
