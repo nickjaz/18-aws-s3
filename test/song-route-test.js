@@ -2,6 +2,8 @@
 
 const expect = require('chai').expect;
 const request = require('superagent');
+const Promise = require('bluebird');
+const mongoose = require('mongoose');
 
 const Song = require('../model/song.js');
 const User = require('../model/user.js');
